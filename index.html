@@ -1,10 +1,285 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Scratch Projects</title>
-  </head>
-  <body>
-    <iframe src="https://scratch.mit.edu/projects/730530521/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
-    <p>This game was made in 2022, at the age of 9.</p>
-  </body>
+
+<iframe src="https://scratch.mit.edu/projects/730530521/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
+<p>This game was made in 2022, at the age of 9.</p>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>My Python Projects</title>
+  <meta name="description" content="A simple vertical portfolio for Python projects." />
+
+  <style>
+    :root{
+      --bg:#0b0d12;
+      --card:#121726;
+      --text:#e9eefc;
+      --muted:#a9b4d6;
+      --line:rgba(255,255,255,.10);
+      --accent:#7aa2ff;
+      --accent2:#7dffb2;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 16px;
+      --max: 980px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 700px at 20% -10%, rgba(122,162,255,.22), transparent 55%),
+                  radial-gradient(900px 600px at 90% 0%, rgba(125,255,178,.12), transparent 50%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.5;
+    }
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 60px}
+    header{
+      display:flex; gap:14px; align-items:flex-start; justify-content:space-between;
+      padding:14px 0 22px;
+      border-bottom:1px solid var(--line);
+      margin-bottom:22px;
+    }
+    .brand h1{margin:0; font-size:28px; letter-spacing:.2px}
+    .brand p{margin:6px 0 0; color:var(--muted); max-width:60ch}
+    .toplinks{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+    .btn{
+      display:inline-flex; align-items:center; gap:8px;
+      text-decoration:none;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      padding:9px 12px;
+      border-radius:999px;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      font-size:14px;
+      color:var(--text);
+    }
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.18)}
+    .btn.primary{border-color: rgba(122,162,255,.55); background: rgba(122,162,255,.12)}
+    .btn.primary:hover{background: rgba(122,162,255,.18)}
+    main{display:flex; flex-direction:column; gap:16px}
+
+    /* Project card (vertical stack) */
+    .project{
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .project-inner{
+      padding:18px 18px 16px;
+      display:flex;
+      flex-direction:column; /* vertical */
+      gap:12px;
+    }
+    .project-head{
+      display:flex; flex-direction:column; gap:6px;
+    }
+    .project-title{
+      display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+      margin:0; font-size:20px;
+    }
+    .tagrow{display:flex; gap:8px; flex-wrap:wrap}
+    .tag{
+      font-size:12px;
+      color:var(--muted);
+      border:1px solid var(--line);
+      padding:4px 8px;
+      border-radius:999px;
+      background: rgba(0,0,0,.12);
+    }
+    .project-desc{margin:0; color:var(--muted); max-width:85ch}
+
+    .actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:2px}
+
+    /* Optional media area */
+    .media{
+      border-top:1px solid var(--line);
+      background: rgba(0,0,0,.15);
+      padding:14px 18px 18px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    .media-grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:12px;
+    }
+    .shot{
+      border:1px solid var(--line);
+      border-radius: 14px;
+      overflow:hidden;
+      background: rgba(255,255,255,.02);
+    }
+    .shot img{
+      display:block;
+      width:100%;
+      height:auto;
+    }
+    .code{
+      border:1px solid var(--line);
+      border-radius:14px;
+      background: rgba(0,0,0,.22);
+      padding:12px 12px;
+      overflow:auto;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+      font-size:13px;
+      color:#dfe7ff;
+      white-space: pre;
+    }
+
+    /* iFrame */
+    .embed-wrap{
+      border:1px solid var(--line);
+      border-radius:14px;
+      overflow:hidden;
+      background: rgba(255,255,255,.02);
+    }
+    iframe{
+      width:100%;
+      height:520px;
+      border:0;
+      display:block;
+      background:#fff;
+    }
+    .smallnote{
+      color:var(--muted);
+      font-size:12px;
+      margin:0;
+    }
+
+    footer{
+      margin-top:26px;
+      padding-top:16px;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    /* Wider screens: show media items side-by-side */
+    @media (min-width: 860px){
+      .media-grid{grid-template-columns: 1.2fr .8fr}
+      iframe{height:560px}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <h1>My Python Projects</h1>
+        <p>Copy/paste a project block to add more. Each project is stacked vertically.</p>
+      </div>
+
+      <div class="toplinks">
+        <a class="btn primary" href="https://github.com/myuser" target="_blank" rel="noopener">GitHub Profile</a>
+        <a class="btn" href="#projects">Projects</a>
+        <a class="btn" href="mailto:you@example.com">Email</a>
+      </div>
+    </header>
+
+    <main id="projects">
+
+      <!-- ===================== PROJECT BLOCK (COPY/PASTE THIS) ===================== -->
+      <section class="project" id="project-1">
+        <div class="project-inner">
+          <div class="project-head">
+            <h2 class="project-title">
+              Project Name Here
+            </h2>
+
+            <div class="tagrow">
+              <span class="tag">Python</span>
+              <span class="tag">CLI / Automation</span>
+              <span class="tag">2026</span>
+            </div>
+
+            <p class="project-desc">
+              Short description: what it does, why it’s useful, and what you built/learned.
+              Keep it 1–3 lines.
+            </p>
+          </div>
+
+          <div class="actions">
+            <a class="btn primary" href="https://github.com/myuser/repo" target="_blank" rel="noopener">View Code</a>
+            <a class="btn" href="files/project.zip" target="_blank" rel="noopener">Download</a>
+            <a class="btn" href="README.html" target="_blank" rel="noopener">Read More</a>
+          </div>
+        </div>
+
+        <!-- Optional media area (screenshots / snippet / iframe demo) -->
+        <div class="media">
+          <div class="media-grid">
+            <!-- LEFT: screenshot(s) OR iframe -->
+            <div class="shot">
+              <!-- Option A: screenshot -->
+              <img src="images/project-1.png" alt="Screenshot of Project Name Here" />
+
+              <!-- Option B: iframe (uncomment to use)
+              <div class="embed-wrap">
+                <iframe
+                  src="https://example.com"
+                  loading="lazy"
+                  referrerpolicy="no-referrer"
+                  sandbox="allow-scripts allow-forms allow-same-origin allow-popups">
+                </iframe>
+              </div>
+              -->
+            </div>
+
+            <!-- RIGHT: quick code snippet / features -->
+            <div class="code" aria-label="Project snippet">
+# Example usage
+python main.py --input data.csv --out results.json
+
+# Key features
+- Fast + simple
+- Logs + error handling
+- Works on Windows
+            </div>
+          </div>
+
+          <p class="smallnote">
+            Tip: some sites block being embedded in an iframe. If it shows blank or errors, link to it instead.
+          </p>
+        </div>
+      </section>
+      <!-- =================== END PROJECT BLOCK =================== -->
+
+
+      <!-- Example: another project (duplicate and edit) -->
+      <section class="project" id="project-2">
+        <div class="project-inner">
+          <div class="project-head">
+            <h2 class="project-title">Another Project</h2>
+            <div class="tagrow">
+              <span class="tag">Python</span>
+              <span class="tag">Data</span>
+              <span class="tag">Matplotlib</span>
+            </div>
+            <p class="project-desc">One-liner summary for the second project.</p>
+          </div>
+          <div class="actions">
+            <a class="btn primary" href="https://github.com/myuser/another-repo" target="_blank" rel="noopener">View Code</a>
+            <a class="btn" href="https://myuser.github.io/python/" target="_blank" rel="noopener">Live Page</a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      © <span id="year"></span> My Projects · Built with plain HTML/CSS · Hosted on GitHub Pages
+    </footer>
+  </div>
+
+  <script>
+    // auto year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
 </html>
